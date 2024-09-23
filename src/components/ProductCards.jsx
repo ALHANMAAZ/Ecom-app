@@ -20,6 +20,7 @@ function ProductCard() {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
+  console.log(product, "product");
 
   const addCart = (product) => {
     dispatch(addToCart(product));
@@ -114,12 +115,12 @@ function ProductCard() {
                 .filter((obj) => obj.title.includes(searchkey))
                 .filter((obj) => obj.category.includes(filterType))
                 .filter((obj) => obj.price.includes(filterPrice))
-                .slice(0, 8).length > 0 ? (
+                .slice(0, 16).length > 0 ? (
                 product
                   .filter((obj) => obj.title.includes(searchkey))
                   .filter((obj) => obj.category.includes(filterType))
                   .filter((obj) => obj.price.includes(filterPrice))
-                  .slice(0, 8)
+                  .slice(0, 16)
                   .map((item, index) => {
                     const {
                       title,
@@ -140,13 +141,15 @@ function ProductCard() {
                           }}
                         >
                           <div
-                            className="flex justify-center cursor-pointer"
+                            className="flex justify-center cursor-pointer max-w-xs rounded overflow-hidden shadow-lg bg-white m-4"
                             onClick={() => navigate(`/productinfo/${id}`)}
+                            // style={{height:"inherit"}}
                           >
                             <img
-                              className="rounded-2xl w-full max-w-xs h-80 object-cover p-2 hover:scale-110 transition-transform duration-300 ease-in-out"
+                              className="rounded-2xl w-full max-w-xs h-48 object-contain p-2 hover:scale-110 transition-transform duration-300 ease-in-out"
                               src={imageUrl}
                               alt="product"
+                              // style={{ width: "inherit", height: "inherit" }}
                             />
                           </div>
 
